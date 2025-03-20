@@ -309,7 +309,7 @@ After importing the required libraries , now lets read the dataset, using the be
     pd.set_option('display.max_rows', None)
     pd.set_option('display.max_columns', None)
     
-    df = pd.read_csv('traces_AES.csv')
+    df = pd.read_csv('traces_AES.csv',header=None)
     
     print(df.head().to_markdown(index=False, numalign="left",
     stralign="left"))
@@ -332,10 +332,10 @@ The columns $traces$ , $Ciphertext$ and $Plaintext$ are extracted in the followi
 
 \begin{lstlisting}[language=Python, caption=Extracting Columns]
     traces = df.iloc[1:, 2:].values
-    plaintexts = df.iloc[:, 0].values
+    plaintexts = df.iloc[1:, 0].values
     formattedplaintext = np.array(
         [plaintextformat(pt) for pt in plaintexts],dtype=object)
-    ciphertexts = df.iloc[:, 1].values
+    ciphertexts = df.iloc[1:, 1].values
     NSample,NPoint= np.shape(traces)
 \end{lstlisting} 
 
@@ -490,42 +490,42 @@ Upon executing this code block cell which basically iterates over each element o
 }
 \begin{lstlisting}
 Row in process 0 and shiftRow index in consideration 0
-The key byte value with the highest correlation is 23 the key byte value in hex is  0x17
+The key byte value with the highest correlation is 208 the key byte value in hex is  0xd0
 Row in process 1 and shiftRow index in consideration 5
-The key byte value with the highest correlation is 136 the key byte value in hex is  0x88
+The key byte value with the highest correlation is 20 the key byte value in hex is  0x14
 Row in process 2 and shiftRow index in consideration 10
-The key byte value with the highest correlation is 103 the key byte value in hex is  0x67
+The key byte value with the highest correlation is 249 the key byte value in hex is  0xf9
 Row in process 3 and shiftRow index in consideration 15
-The key byte value with the highest correlation is 134 the key byte value in hex is  0x86
+The key byte value with the highest correlation is 168 the key byte value in hex is  0xa8
 Row in process 4 and shiftRow index in consideration 4
-The key byte value with the highest correlation is 223 the key byte value in hex is  0xdf
+The key byte value with the highest correlation is 201 the key byte value in hex is  0xc9
 Row in process 5 and shiftRow index in consideration 9
-The key byte value with the highest correlation is 244 the key byte value in hex is  0xf4
+The key byte value with the highest correlation is 238 the key byte value in hex is  0xee
 Row in process 6 and shiftRow index in consideration 14
-The key byte value with the highest correlation is 57 the key byte value in hex is  0x39
+The key byte value with the highest correlation is 37 the key byte value in hex is  0x25
 Row in process 7 and shiftRow index in consideration 3
-The key byte value with the highest correlation is 46 the key byte value in hex is  0x2e
+The key byte value with the highest correlation is 137 the key byte value in hex is  0x89
 Row in process 8 and shiftRow index in consideration 8
-The key byte value with the highest correlation is 212 the key byte value in hex is  0xd4
+The key byte value with the highest correlation is 225 the key byte value in hex is  0xe1
 Row in process 9 and shiftRow index in consideration 13
-The key byte value with the highest correlation is 4 the key byte value in hex is  0x4
+The key byte value with the highest correlation is 63 the key byte value in hex is  0x3f
 Row in process 10 and shiftRow index in consideration 2
-The key byte value with the highest correlation is 140 the key byte value in hex is  0x8c
+The key byte value with the highest correlation is 12 the key byte value in hex is  0xc
 Row in process 11 and shiftRow index in consideration 7
-The key byte value with the highest correlation is 139 the key byte value in hex is  0x8b
+The key byte value with the highest correlation is 200 the key byte value in hex is  0xc8
 Row in process 12 and shiftRow index in consideration 12
-The key byte value with the highest correlation is 169 the key byte value in hex is  0xa9
+The key byte value with the highest correlation is 182 the key byte value in hex is  0xb6
 Row in process 13 and shiftRow index in consideration 1
-The key byte value with the highest correlation is 206 the key byte value in hex is  0xce
+The key byte value with the highest correlation is 99 the key byte value in hex is  0x63
 Row in process 14 and shiftRow index in consideration 6
-The key byte value with the highest correlation is 153 the key byte value in hex is  0x99
+The key byte value with the highest correlation is 12 the key byte value in hex is  0xc
 Row in process 15 and shiftRow index in consideration 11
-The key byte value with the highest correlation is 130 the key byte value in hex is  0x82
+The key byte value with the highest correlation is 166 the key byte value in hex is  0xa6    
 \end{lstlisting}
 
 Thus after performing the Divide and Conquer attack on the dataset we have obtained the 128bit key of the AES ecryption used in the hardware. They obtained was
 
-$$AES_k: 17886786dff4392ed4048c8ba9ce9982$$
+$$AES_k: d014f9a8c9ee2589e13f0cc8b6630ca6$$
 
 \chapter{Conclusion}
 
